@@ -19,18 +19,29 @@ export const useTutorData = () => {
       if (savedData) {
         const parsed = JSON.parse(savedData);
         setDays(parsed.days || generateCurrentMonth());
-        setSalary(parsed.salary || DEFAULT_SALARY);
-        // Recalculate default rate if not set, based on new 16-day rule
-        if (parsed.rate) {
-            setRate(parsed.rate);
+        // Auto-fix: If old default 80,000 is found, update to 8,000
+        if (parsed.salary === 80000) {
+            setSalary(8000);
+            if (parsed.rate === 5000) {
+                setRate(500);
+            } else if (parsed.rate) {
+                setRate(parsed.rate);
+            } else {
+                 setRate(500);
+            }
         } else {
-            const sal = parsed.salary || DEFAULT_SALARY;
-            setRate(sal / DEFAULT_CYCLE_DAYS);
+            setSalary(parsed.salary || DEFAULT_SALARY);
+             if (parsed.rate) {
+                setRate(parsed.rate);
+            } else {
+                const sal = parsed.salary || DEFAULT_SALARY;
+                setRate(sal / DEFAULT_CYCLE_DAYS);
+            }
         }
       } else {
         setDays(generateCurrentMonth());
         setSalary(DEFAULT_SALARY);
-        setRate(DEFAULT_SALARY / DEFAULT_CYCLE_DAYS); // 80000 / 16 = 5000
+        setRate(DEFAULT_SALARY / DEFAULT_CYCLE_DAYS); // 8000 / 16 = 500
       }
     };
     loadData();
@@ -84,8 +95,10 @@ export const useTutorData = () => {
   const lockMaster = () => setIsMasterUnlock(false);
 
   const resetCycle = () => {
-    if (confirm("Are you sure you want to reset the cycle? This will clear all 'Taught' marks.")) {
+    if (confirm("Are you sure you want to reset the cycle? This will clear marks and restore default rate.")) {
         setDays(prev => prev.map(day => ({ ...day, isTaught: false, topic: '' })));
+        setSalary(DEFAULT_SALARY);
+        setRate(DEFAULT_SALARY / DEFAULT_CYCLE_DAYS);
     }
   };
 
