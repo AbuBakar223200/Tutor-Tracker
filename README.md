@@ -3,7 +3,6 @@
 A modern, responsive React application for private tutors to track attendance, calculate earnings, and manage monthly teaching cycles.
 
 ![Tutor Tracker Screenshot](public/screenshot.png) 
-*(Note: Replace with actual screenshot after running)*
 
 ## Features
 
