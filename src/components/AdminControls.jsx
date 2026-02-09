@@ -104,12 +104,15 @@ const AdminControls = ({ isAdmin, toggleAdmin, isMasterUnlock, attemptMasterUnlo
                 )}
 
                 {/* Reset Cycle */}
-                <button 
-                    onClick={resetCycle}
-                    className="px-4 py-1.5 bg-red-50 hover:bg-red-100 text-red-600 rounded-md text-sm font-medium transition-colors"
-                >
-                    Reset Cycle
-                </button>
+                {/* Reset Cycle */}
+                {isMasterUnlock && (
+                    <button 
+                        onClick={resetCycle}
+                        className="px-4 py-1.5 bg-red-50 hover:bg-red-100 text-red-600 rounded-md text-sm font-medium transition-colors"
+                    >
+                        Reset Cycle
+                    </button>
+                )}
             </div>
         )}
       </div>
