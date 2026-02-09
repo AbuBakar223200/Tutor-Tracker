@@ -12,7 +12,7 @@ A modern, responsive React application for private tutors to track attendance, c
   - Prevents accidental changes to past records.
 - **Master Unlock**: Admin feature to modify past/future records using a secure password.
 - **Salary Tracking**:
-  - Set a **Target Salary** (e.g., 80,000 BDT).
+  - Set a **Target Salary** (e.g., 8,000 BDT).
   - Automatically calculates **Rate Per Class** based on a 16-day cycle (or manual input).
   - Visual progress of earnings.
 - **Responsive Design**: optimized for mobile and desktop using **Tailwind CSS**.
