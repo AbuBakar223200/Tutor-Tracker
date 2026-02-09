@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 const STORAGE_KEY = 'tutor_tracker_data';
 const MASTER_PASSWORD = import.meta.env.VITE_MASTER_PASSWORD || 'admin123';
-const DEFAULT_SALARY = 80000;
+const DEFAULT_SALARY = 8000;
 const DEFAULT_CYCLE_DAYS = 16;
 
 export const useTutorData = () => {
